@@ -3,22 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kolat Mod 5.0.2 — Ultimate Minecraft Experience</title>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<title>Fantasy Shaders Reimagined — Minecraft Shader Pack</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Raleway:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
   :root {
-    --green: #00ff7f;
-    --gold: #ffd700;
-    --red: #ff4444;
-    --bg: #0a0c0f;
-    --bg2: #0f1318;
-    --bg3: #141a22;
-    --border: #1e2d20;
-    --text: #c8d8b0;
-    --dim: #5a7a5a;
-    --block-brown: #8B5E3C;
-    --block-stone: #888;
-    --dirt: #6b4c2a;
+    --purple: #a855f7;
+    --purple-light: #d8b4fe;
+    --purple-dark: #6b21a8;
+    --violet: #7c3aed;
+    --gold: #fbbf24;
+    --blue-night: #3b82f6;
+    --cyan: #67e8f9;
+    --bg: #07050f;
+    --bg2: #0d0a1a;
+    --bg3: #120e22;
+    --border: #2a1a4a;
+    --text: #c4b5d4;
+    --dim: #6b5a8a;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,181 +27,228 @@
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Raleway', sans-serif;
     overflow-x: hidden;
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Crect x='0' y='0' width='20' height='20' fill='%2300ff7f' rx='2'/%3E%3Crect x='2' y='2' width='16' height='16' fill='%230a0c0f' rx='1'/%3E%3C/svg%3E") 10 10, crosshair;
   }
 
-  /* ─── ANIMATED GRID BG ─── */
+  /* ─── STARFIELD ─── */
   body::before {
     content: '';
     position: fixed; inset: 0;
     background-image:
-      linear-gradient(rgba(0,255,127,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,255,127,0.03) 1px, transparent 1px);
-    background-size: 32px 32px;
-    animation: gridScroll 20s linear infinite;
+      radial-gradient(1px 1px at 10% 15%, rgba(216,180,254,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 40% 8%, rgba(167,139,250,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 55% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 25%, rgba(216,180,254,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 80% 50%, rgba(167,139,250,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 10%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 15% 75%, rgba(216,180,254,0.4) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 35% 90%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 65% 80%, rgba(167,139,250,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 85% 70%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 5% 50%, rgba(216,180,254,0.3) 0%, transparent 100%),
+      radial-gradient(2px 2px at 50% 30%, rgba(251,191,36,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 75% 90%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 20% 20%, rgba(216,180,254,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 95% 35%, rgba(255,255,255,0.4) 0%, transparent 100%);
     pointer-events: none; z-index: 0;
+    animation: starTwinkle 8s ease-in-out infinite alternate;
   }
-  @keyframes gridScroll {
-    0% { background-position: 0 0; }
-    100% { background-position: 32px 32px; }
+  @keyframes starTwinkle {
+    0%   { opacity: 0.6; }
+    50%  { opacity: 1; }
+    100% { opacity: 0.7; }
   }
 
-  /* Particle overlay */
+  /* ─── NEBULA BG ─── */
   body::after {
     content: '';
     position: fixed; inset: 0;
-    background: radial-gradient(ellipse at 50% 0%, rgba(0,255,127,0.06) 0%, transparent 65%);
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(124,58,237,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 60%, rgba(59,130,246,0.06) 0%, transparent 45%),
+      radial-gradient(ellipse at 50% 80%, rgba(168,85,247,0.07) 0%, transparent 40%);
     pointer-events: none; z-index: 0;
+    animation: nebulaShift 15s ease-in-out infinite alternate;
+  }
+  @keyframes nebulaShift {
+    0%   { opacity: 0.5; }
+    100% { opacity: 1; }
   }
 
   /* ─── HEADER ─── */
   header {
     position: relative; z-index: 10;
-    padding: 3rem 2rem 2rem;
+    padding: 4rem 2rem 3rem;
     text-align: center;
-    border-bottom: 2px solid var(--border);
-    background: linear-gradient(180deg, rgba(0,255,127,0.04) 0%, transparent 100%);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(124,58,237,0.12) 0%, rgba(168,85,247,0.05) 50%, transparent 100%);
+    pointer-events: none;
   }
 
-  .mod-badge {
+  /* Aurora effect */
+  header::after {
+    content: '';
+    position: absolute; top: -30px; left: -20%; right: -20%; height: 180px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(59,130,246,0.15) 20%,
+      rgba(168,85,247,0.25) 40%,
+      rgba(103,232,249,0.12) 60%,
+      rgba(168,85,247,0.2) 75%,
+      transparent 100%);
+    filter: blur(20px);
+    animation: aurora 10s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  @keyframes aurora {
+    0%   { transform: translateX(-10%) scaleY(1); opacity: 0.6; }
+    50%  { transform: translateX(5%) scaleY(1.3); opacity: 1; }
+    100% { transform: translateX(-5%) scaleY(0.8); opacity: 0.7; }
+  }
+
+  .shader-badge {
     display: inline-block;
     font-family: 'Share Tech Mono', monospace;
-    font-size: 0.65rem;
-    color: var(--green);
-    background: rgba(0,255,127,0.08);
-    border: 1px solid rgba(0,255,127,0.3);
-    padding: 0.3rem 1rem;
-    letter-spacing: 0.2em;
+    font-size: 0.62rem;
+    color: var(--purple-light);
+    background: rgba(168,85,247,0.1);
+    border: 1px solid rgba(168,85,247,0.35);
+    padding: 0.35rem 1.1rem;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    animation: pulse 3s ease-in-out infinite;
+    margin-bottom: 2rem;
+    position: relative; z-index: 2;
+    animation: badgePulse 4s ease-in-out infinite;
   }
-  @keyframes pulse {
-    0%,100% { box-shadow: 0 0 8px rgba(0,255,127,0.2); }
-    50% { box-shadow: 0 0 20px rgba(0,255,127,0.5); }
+  @keyframes badgePulse {
+    0%,100% { box-shadow: 0 0 10px rgba(168,85,247,0.2); }
+    50%      { box-shadow: 0 0 25px rgba(168,85,247,0.5); }
   }
 
   .logo {
-    font-family: 'Press Start 2P', monospace;
-    font-size: clamp(2rem, 7vw, 4.5rem);
-    color: var(--green);
-    text-shadow:
-      4px 4px 0 #005530,
-      0 0 40px rgba(0,255,127,0.4),
-      0 0 80px rgba(0,255,127,0.15);
-    line-height: 1.2;
-    letter-spacing: -1px;
-    animation: logoGlow 4s ease-in-out infinite alternate;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 6vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.15;
+    position: relative; z-index: 2;
+    background: linear-gradient(135deg, #d8b4fe 0%, #a855f7 40%, #67e8f9 70%, #fbbf24 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 30px rgba(168,85,247,0.4));
+    animation: logoShimmer 6s ease-in-out infinite alternate;
   }
-  @keyframes logoGlow {
-    from { text-shadow: 4px 4px 0 #005530, 0 0 20px rgba(0,255,127,0.3); }
-    to   { text-shadow: 4px 4px 0 #005530, 0 0 60px rgba(0,255,127,0.7), 0 0 100px rgba(0,255,127,0.3); }
+  @keyframes logoShimmer {
+    from { filter: drop-shadow(0 0 20px rgba(168,85,247,0.3)); }
+    to   { filter: drop-shadow(0 0 50px rgba(168,85,247,0.7)) drop-shadow(0 0 80px rgba(103,232,249,0.2)); }
   }
-
-  .logo span { color: var(--gold); text-shadow: 4px 4px 0 #7a4000, 0 0 40px rgba(255,215,0,0.5); }
 
   .version-tag {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 0.6rem;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.62rem;
     color: var(--gold);
-    background: rgba(255,215,0,0.08);
-    border: 1px solid rgba(255,215,0,0.25);
+    background: rgba(251,191,36,0.08);
+    border: 1px solid rgba(251,191,36,0.25);
     display: inline-block;
-    padding: 0.4rem 0.9rem;
-    margin-top: 1rem;
-    letter-spacing: 0.1em;
+    padding: 0.4rem 1rem;
+    margin-top: 1.2rem;
+    letter-spacing: 0.12em;
+    position: relative; z-index: 2;
   }
 
   .tagline {
-    font-size: 1.35rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 300;
     color: var(--dim);
-    margin-top: 1.5rem;
-    letter-spacing: 0.05em;
+    margin-top: 1.2rem;
+    letter-spacing: 0.08em;
+    position: relative; z-index: 2;
   }
+  .tagline strong { color: var(--purple-light); font-weight: 600; }
 
-  /* ─── DOWNLOAD HERO BUTTON ─── */
   .hero-btn-wrap {
     margin: 2.5rem auto 0;
     display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
+    position: relative; z-index: 2;
   }
 
   .btn-download {
     display: inline-block;
-    font-family: 'Press Start 2P', monospace;
-    font-size: 0.75rem;
-    color: #000;
-    background: var(--green);
-    padding: 1.1rem 2.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, var(--violet) 0%, var(--purple) 50%, #9333ea 100%);
+    padding: 1.1rem 2.8rem;
     text-decoration: none;
-    border: none;
-    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
-    transition: all 0.15s;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    animation: btnPulse 2.5s ease-in-out infinite;
+    border: 1px solid rgba(168,85,247,0.5);
+    transition: all 0.2s;
+    position: relative; overflow: hidden;
+    letter-spacing: 0.08em;
+    animation: btnGlow 3s ease-in-out infinite;
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
   }
-  @keyframes btnPulse {
-    0%,100% { box-shadow: 0 0 20px rgba(0,255,127,0.4); }
-    50% { box-shadow: 0 0 45px rgba(0,255,127,0.8), 0 0 80px rgba(0,255,127,0.3); }
+  @keyframes btnGlow {
+    0%,100% { box-shadow: 0 0 20px rgba(168,85,247,0.4); }
+    50%      { box-shadow: 0 0 45px rgba(168,85,247,0.8), 0 0 80px rgba(124,58,237,0.3); }
   }
   .btn-download::before {
     content: '';
     position: absolute; top: -50%; left: -60%;
-    width: 40%; height: 200%;
-    background: rgba(255,255,255,0.25);
+    width: 35%; height: 200%;
+    background: rgba(255,255,255,0.15);
     transform: skewX(-20deg);
-    transition: left 0.4s ease;
+    transition: left 0.5s ease;
   }
   .btn-download:hover::before { left: 130%; }
-  .btn-download:hover {
-    background: #fff;
-    transform: translateY(-2px) scale(1.03);
-  }
-  .btn-download:active { transform: translateY(0) scale(0.98); }
+  .btn-download:hover { transform: translateY(-3px); box-shadow: 0 0 60px rgba(168,85,247,0.9); }
 
   /* ─── STATS BAR ─── */
   .stats-bar {
     position: relative; z-index: 5;
-    display: flex; justify-content: center; gap: 0; flex-wrap: wrap;
-    border-bottom: 2px solid var(--border);
+    display: flex; justify-content: center; flex-wrap: wrap;
+    border-bottom: 1px solid var(--border);
   }
   .stat-item {
-    padding: 1.2rem 2.5rem;
+    padding: 1.3rem 2.5rem;
     border-right: 1px solid var(--border);
     text-align: center;
     background: var(--bg2);
-    flex: 1; min-width: 140px;
+    flex: 1; min-width: 130px;
   }
   .stat-item:last-child { border-right: none; }
   .stat-num {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 1.2rem;
-    color: var(--green);
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--purple);
     display: block;
   }
   .stat-label {
-    font-size: 0.75rem;
+    font-size: 0.68rem;
     color: var(--dim);
     font-weight: 600;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    margin-top: 0.3rem;
+    margin-top: 0.2rem;
     display: block;
   }
 
-  /* ─── SECTIONS ─── */
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 5; }
-
+  /* ─── LAYOUT ─── */
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 5; }
   section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
 
   .section-label {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 0.65rem;
-    color: var(--green);
+    font-size: 0.62rem;
+    color: var(--purple);
     letter-spacing: 0.3em;
     text-transform: uppercase;
     margin-bottom: 0.8rem;
@@ -208,93 +256,54 @@
   }
   .section-label::after {
     content: '';
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, rgba(0,255,127,0.3), transparent);
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, rgba(168,85,247,0.4), transparent);
   }
 
   .section-title {
-    font-family: 'Press Start 2P', monospace;
-    font-size: clamp(1.1rem, 3vw, 1.8rem);
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.3rem, 3.5vw, 2rem);
+    font-weight: 700;
     color: #fff;
-    line-height: 1.5;
+    line-height: 1.4;
     margin-bottom: 1.5rem;
   }
-  .section-title span { color: var(--green); }
+  .section-title span { color: var(--purple); }
+  .section-title .gold { color: var(--gold); }
 
   .section-text {
-    font-size: 1.15rem;
-    line-height: 1.9;
+    font-size: 1.08rem;
+    line-height: 1.95;
     color: var(--text);
-    max-width: 700px;
+    max-width: 720px;
   }
 
-  /* ─── ABOUT / DESCRIPTION ─── */
+  /* ─── ABOUT ─── */
   .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3.5rem;
+    align-items: start;
   }
-  @media (max-width: 700px) { .about-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 720px) { .about-grid { grid-template-columns: 1fr; } }
 
-  .pixel-art-box {
-    background: var(--bg3);
-    border: 2px solid var(--border);
-    padding: 2rem;
-    position: relative;
-    clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
-  }
-  .pixel-art-box::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(0,255,127,0.04) 0%, transparent 60%);
-    pointer-events: none;
-  }
-
-  /* Minecraft-style icon grid */
-  .mc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
-  .mc-block {
-    aspect-ratio: 1;
-    border-radius: 2px;
-    position: relative;
+  /* Night sky preview art */
+  .sky-box {
+    background: linear-gradient(180deg, #0d0522 0%, #1a0a35 40%, #0f1a3a 70%, #0a1028 100%);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0;
     overflow: hidden;
-    box-shadow: inset -3px -3px 0 rgba(0,0,0,0.4), inset 3px 3px 0 rgba(255,255,255,0.15);
-    animation: blockFloat 3s ease-in-out infinite;
+    position: relative;
+    min-height: 260px;
+    clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
   }
-  .mc-block:nth-child(2) { animation-delay: 0.2s; }
-  .mc-block:nth-child(3) { animation-delay: 0.4s; }
-  .mc-block:nth-child(4) { animation-delay: 0.6s; }
-  .mc-block:nth-child(5) { animation-delay: 0.8s; }
-  .mc-block:nth-child(6) { animation-delay: 1.0s; }
-  .mc-block:nth-child(7) { animation-delay: 1.2s; }
-  .mc-block:nth-child(8) { animation-delay: 1.4s; }
-  @keyframes blockFloat {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-4px); }
-  }
-  .b-grass { background: #5a9c3a; }
-  .b-grass::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 30%; background: #7ed451; }
-  .b-dirt  { background: #8c6239; }
-  .b-stone { background: #7a7a7a; }
-  .b-gold  { background: #f0c030; }
-  .b-diamond { background: #50e8e8; }
-  .b-wood { background: #b08040; }
-  .b-lava { background: #e04010; animation: lavaGlow 1.5s ease-in-out infinite alternate; }
-  @keyframes lavaGlow { from {background:#e04010;} to {background:#ff7020;} }
-  .b-obsidian { background: #1a0a2a; }
-  .b-emerald { background: #20e060; }
-  .b-iron { background: #d8c8b8; }
-  .b-tnt { background: #cc2020; }
-  .b-netherite { background: #3a2a3a; }
-  .b-command { background: #7040a0; }
-  .b-food1 { background: #d06820; }
-  .b-food2 { background: #e8a030; }
+  .sky-box svg { width: 100%; height: 100%; display: block; }
 
-  /* ─── FEATURES GRID ─── */
+  /* ─── FEATURE CARDS ─── */
   .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
     margin-top: 3rem;
   }
@@ -303,225 +312,193 @@
     background: var(--bg2);
     border: 1px solid var(--border);
     padding: 2rem;
-    position: relative;
-    overflow: hidden;
+    position: relative; overflow: hidden;
     transition: border-color 0.3s, transform 0.3s;
-    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
   }
   .feature-card::before {
     content: '';
     position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--card-accent, var(--green)), transparent);
+    background: linear-gradient(90deg, transparent, var(--card-accent, var(--purple)), transparent);
     opacity: 0; transition: opacity 0.3s;
   }
-  .feature-card:hover { border-color: rgba(0,255,127,0.3); transform: translateY(-4px); }
+  .feature-card:hover { border-color: rgba(168,85,247,0.4); transform: translateY(-4px); }
   .feature-card:hover::before { opacity: 1; }
+  .feature-card.gold-card { --card-accent: var(--gold); }
+  .feature-card.blue-card { --card-accent: var(--blue-night); }
+  .feature-card.cyan-card { --card-accent: var(--cyan); }
 
-  .feature-card.gold { --card-accent: var(--gold); }
-  .feature-card.red  { --card-accent: var(--red); }
+  .feature-icon { font-size: 1.8rem; margin-bottom: 1rem; display: block; }
 
-  .feature-icon {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
-    display: block;
-  }
   .feature-title {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 0.7rem;
-    color: #fff;
-    margin-bottom: 0.8rem;
-    line-height: 1.6;
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--purple-light);
+    margin-bottom: 0.7rem;
+    line-height: 1.5;
   }
-  .feature-card.gold .feature-title { color: var(--gold); }
-  .feature-card.red  .feature-title { color: var(--red); }
+  .feature-card.gold-card .feature-title { color: var(--gold); }
+  .feature-card.blue-card .feature-title { color: #93c5fd; }
+  .feature-card.cyan-card .feature-title { color: var(--cyan); }
 
-  .feature-desc {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: var(--text);
-  }
+  .feature-desc { font-size: 0.98rem; line-height: 1.75; color: var(--text); }
 
-  /* ─── COMMANDS TABLE ─── */
-  .cmd-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 2rem;
-    font-family: 'Share Tech Mono', monospace;
-  }
-  .cmd-table th {
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--dim);
-    padding: 0.8rem 1.2rem;
-    text-align: left;
-    border-bottom: 2px solid var(--border);
-    background: var(--bg2);
-  }
-  .cmd-table td {
-    padding: 0.9rem 1.2rem;
-    border-bottom: 1px solid var(--border);
-    font-size: 0.95rem;
-    vertical-align: top;
-  }
-  .cmd-table tr { background: var(--bg); transition: background 0.2s; }
-  .cmd-table tr:hover td { background: rgba(0,255,127,0.03); }
-  .cmd-name { color: var(--green); font-weight: bold; }
-  .cmd-args { color: var(--gold); }
-  .cmd-desc { color: var(--text); font-family: 'Rajdhani', sans-serif; font-size: 0.95rem; }
-  .badge {
-    display: inline-block;
-    font-size: 0.55rem;
-    padding: 0.2rem 0.5rem;
-    border-radius: 2px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: bold;
-  }
-  .badge-admin { background: rgba(255,68,68,0.15); color: var(--red); border: 1px solid rgba(255,68,68,0.3); }
-  .badge-op    { background: rgba(255,215,0,0.1); color: var(--gold); border: 1px solid rgba(255,215,0,0.3); }
-  .badge-all   { background: rgba(0,255,127,0.1); color: var(--green); border: 1px solid rgba(0,255,127,0.3); }
+  /* ─── CHARACTERISTICS ─── */
+  .char-list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 2rem; }
 
-  /* ─── FOOD TABLE ─── */
-  .food-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-
-  .food-card {
+  .char-item {
     background: var(--bg2);
     border: 1px solid var(--border);
-    padding: 1.2rem;
-    display: flex; flex-direction: column; gap: 0.5rem;
-    transition: transform 0.2s, border-color 0.2s;
+    border-left: 3px solid var(--purple);
+    padding: 1.8rem 2rem;
     position: relative; overflow: hidden;
+    transition: border-color 0.3s;
   }
-  .food-card:hover { transform: translateY(-3px); border-color: rgba(255,215,0,0.3); }
-  .food-card::after {
-    content: '';
-    position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    opacity: 0; transition: opacity 0.3s;
-  }
-  .food-card:hover::after { opacity: 1; }
+  .char-item:hover { border-color: rgba(168,85,247,0.4); border-left-color: var(--purple-light); }
+  .char-item.blue-left  { border-left-color: var(--blue-night); }
+  .char-item.gold-left  { border-left-color: var(--gold); }
+  .char-item.cyan-left  { border-left-color: var(--cyan); }
 
-  .food-name {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 0.55rem;
-    color: var(--gold);
-    line-height: 1.6;
+  .char-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--purple-light);
+    margin-bottom: 0.5rem;
   }
-  .food-effect { font-size: 0.88rem; color: var(--text); }
-  .food-hearts {
-    display: flex; gap: 3px; flex-wrap: wrap;
-    margin-top: 0.3rem;
-  }
-  .heart { width: 14px; height: 14px; display: inline-block; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath fill='%23ff4455' d='M7 12L1 6C0 5 0 3 1 2c1-1 3-1 4 1l2 2 2-2c1-2 3-2 4-1 1 1 1 3 0 4z'/%3E%3C/svg%3E") center/contain no-repeat; }
-  .heart.half { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath fill='%23884433' d='M7 12L1 6C0 5 0 3 1 2c1-1 3-1 4 1l2 2 2-2c1-2 3-2 4-1 1 1 1 3 0 4z'/%3E%3Cpath fill='%23ff4455' d='M7 12L1 6C0 5 0 3 1 2c1-1 3-1 4 1l2 0z'/%3E%3C/svg%3E"); }
+  .char-item.blue-left .char-title { color: #93c5fd; }
+  .char-item.gold-left .char-title { color: var(--gold); }
+  .char-item.cyan-left .char-title { color: var(--cyan); }
+
+  .char-desc { font-size: 1rem; line-height: 1.8; color: var(--text); }
 
   /* ─── INSTALL STEPS ─── */
   .steps { margin-top: 2.5rem; }
   .step {
     display: flex; gap: 1.5rem; align-items: flex-start;
-    padding: 1.5rem 0;
+    padding: 1.8rem 0;
     border-bottom: 1px solid var(--border);
-    position: relative;
   }
   .step:last-child { border-bottom: none; }
   .step-num {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 1.2rem;
-    color: var(--green);
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--purple);
+    opacity: 0.3;
     min-width: 50px;
     text-align: center;
-    opacity: 0.4;
+    line-height: 1;
     margin-top: 0.2rem;
   }
   .step-body h3 {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 0.7rem;
-    color: #fff;
-    margin-bottom: 0.5rem;
-    line-height: 1.6;
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--purple-light);
+    margin-bottom: 0.6rem;
   }
-  .step-body p { font-size: 1.05rem; line-height: 1.7; color: var(--text); }
+  .step-body p { font-size: 1.05rem; line-height: 1.8; color: var(--text); }
   .code-inline {
     font-family: 'Share Tech Mono', monospace;
-    background: rgba(0,255,127,0.1);
-    color: var(--green);
-    padding: 0.15rem 0.5rem;
-    border-radius: 2px;
-    font-size: 0.9em;
+    background: rgba(168,85,247,0.12);
+    color: var(--purple-light);
+    padding: 0.15rem 0.55rem;
+    border-radius: 3px;
+    font-size: 0.88em;
   }
+
+  /* fabric badge */
+  .fabric-note {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: #fff;
+    background: rgba(168,85,247,0.15);
+    border: 1px solid rgba(168,85,247,0.4);
+    padding: 0.5rem 1rem;
+    margin-top: 0.8rem;
+    letter-spacing: 0.08em;
+  }
+  .fabric-note::before { content: '⚠'; font-size: 0.9rem; }
 
   /* ─── DOWNLOAD SECTION ─── */
   .download-section {
-    background: linear-gradient(135deg, rgba(0,255,127,0.04) 0%, rgba(0,255,127,0.01) 100%);
-    border: 1px solid rgba(0,255,127,0.15);
-    padding: 4rem 2rem;
+    background: linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(168,85,247,0.04) 100%);
+    border: 1px solid rgba(168,85,247,0.2);
+    padding: 4.5rem 2rem;
     text-align: center;
-    clip-path: polygon(0 20px, 20px 0, calc(100% - 20px) 0, 100% 20px, 100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0 calc(100% - 20px));
-    margin: 2rem 0;
+    clip-path: polygon(0 24px, 24px 0, calc(100% - 24px) 0, 100% 24px, 100% calc(100% - 24px), calc(100% - 24px) 100%, 24px 100%, 0 calc(100% - 24px));
+    margin: 3rem 0;
     position: relative; overflow: hidden;
   }
   .download-section::before {
     content: '';
     position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 50% 50%, rgba(0,255,127,0.08) 0%, transparent 65%);
+    background: radial-gradient(ellipse at 50% 50%, rgba(168,85,247,0.1) 0%, transparent 65%);
   }
+  /* aurora inside dl */
+  .download-section::after {
+    content: '';
+    position: absolute; top: 0; left: -30%; right: -30%; height: 100px;
+    background: linear-gradient(90deg, transparent, rgba(103,232,249,0.06) 30%, rgba(168,85,247,0.12) 50%, rgba(59,130,246,0.06) 70%, transparent);
+    filter: blur(25px);
+    animation: aurora 12s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+
   .dl-title {
-    font-family: 'Press Start 2P', monospace;
-    font-size: clamp(1rem, 3.5vw, 1.8rem);
-    color: var(--green);
-    text-shadow: 0 0 30px rgba(0,255,127,0.5);
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.2rem, 4vw, 2.2rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, #d8b4fe 0%, #a855f7 50%, #67e8f9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 0.8rem;
-    line-height: 1.5;
-    position: relative;
+    position: relative; z-index: 1;
   }
-  .dl-sub {
-    color: var(--dim);
-    font-size: 1rem;
-    margin-bottom: 2.5rem;
-    position: relative;
-  }
+  .dl-sub { color: var(--dim); font-size: 1rem; margin-bottom: 2.5rem; position: relative; z-index: 1; }
+
   .btn-big {
     display: inline-block;
-    font-family: 'Press Start 2P', monospace;
-    font-size: 0.85rem;
-    color: #000;
-    background: linear-gradient(135deg, var(--green) 0%, #00cc66 100%);
-    padding: 1.4rem 3rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, var(--violet) 0%, var(--purple) 50%, #9333ea 100%);
+    padding: 1.4rem 3.5rem;
     text-decoration: none;
-    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
-    position: relative; overflow: hidden;
+    border: 1px solid rgba(168,85,247,0.5);
+    clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+    position: relative; overflow: hidden; z-index: 1;
+    letter-spacing: 0.1em;
     transition: all 0.2s;
-    box-shadow: 0 0 40px rgba(0,255,127,0.4);
-    animation: bigBtnPulse 2s ease-in-out infinite;
+    animation: bigBtnGlow 2.5s ease-in-out infinite;
   }
-  @keyframes bigBtnPulse {
-    0%,100% { box-shadow: 0 0 30px rgba(0,255,127,0.4); }
-    50% { box-shadow: 0 0 70px rgba(0,255,127,0.8), 0 0 120px rgba(0,255,127,0.3); }
+  @keyframes bigBtnGlow {
+    0%,100% { box-shadow: 0 0 30px rgba(168,85,247,0.5); }
+    50%      { box-shadow: 0 0 70px rgba(168,85,247,0.9), 0 0 120px rgba(124,58,237,0.4); }
   }
   .btn-big::before {
     content: '';
     position: absolute; top: -50%; left: -60%;
     width: 35%; height: 200%;
-    background: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.15);
     transform: skewX(-20deg);
     transition: left 0.5s ease;
   }
   .btn-big:hover::before { left: 130%; }
-  .btn-big:hover { transform: scale(1.05); background: linear-gradient(135deg, #fff 0%, var(--green) 100%); }
+  .btn-big:hover { transform: scale(1.05); }
+
   .dl-info {
     margin-top: 1.5rem;
     font-family: 'Share Tech Mono', monospace;
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     color: var(--dim);
-    letter-spacing: 0.1em;
-    position: relative;
+    letter-spacing: 0.15em;
+    position: relative; z-index: 1;
   }
 
   /* ─── FOOTER ─── */
@@ -530,49 +507,44 @@
     padding: 2rem;
     border-top: 1px solid var(--border);
     font-family: 'Share Tech Mono', monospace;
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     color: var(--dim);
     letter-spacing: 0.15em;
     position: relative; z-index: 5;
   }
-  footer span { color: var(--green); }
+  footer span { color: var(--purple); }
 
-  /* ─── SCANLINES ─── */
+  /* scanlines */
   .scanlines {
     position: fixed; inset: 0; pointer-events: none; z-index: 100;
-    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
-    animation: none;
+    background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.025) 3px, rgba(0,0,0,0.025) 4px);
   }
 
-  /* ─── RESPONSIVE ─── */
   @media (max-width: 600px) {
-    .cmd-table thead { display: none; }
-    .cmd-table td { display: block; border: none; padding: 0.4rem 0.8rem; }
-    .cmd-table tr { border: 1px solid var(--border); margin-bottom: 0.8rem; display: block; }
     .features-grid { grid-template-columns: 1fr; }
+    .stat-item { min-width: 120px; }
   }
 </style>
 </head>
 <body>
-
 <div class="scanlines"></div>
 
 <!-- ══════════ HEADER ══════════ -->
 <header>
-  <div class="mod-badge">⬛ Minecraft Java Mod · Forge Compatible</div>
-  <h1 class="logo">KO<span>LAT</span></h1>
-  <div class="version-tag">v5.0.2 — LATEST RELEASE</div>
-  <p class="tagline">The ultimate admin &amp; survival experience enhancement</p>
+  <div class="shader-badge">✦ Minecraft Shader Pack · Fabric Only</div>
+  <h1 class="logo">Fantasy Shaders<br>Reimagined</h1>
+  <div class="version-tag">v2.5.5 — LATEST RELEASE</div>
+  <p class="tagline">Based on <strong>Complementary Shaders</strong> — more colorful, more vivid, more fantasy</p>
   <div class="hero-btn-wrap">
-    <a class="btn-download" href="https://www.mediafire.com/file/b5v0faezv583j5i/Kolat-5.0.2.jar/file" target="_blank">⬇ DOWNLOAD NOW</a>
+    <a class="btn-download" href="https://www.mediafire.com/file/dyh1qqhku5td6ii/Fantasy_Shaders_Reimagined-2.5.5.jar/file" target="_blank">✦ DOWNLOAD v2.5.5</a>
   </div>
 </header>
 
 <!-- ══════════ STATS ══════════ -->
 <div class="stats-bar">
-  <div class="stat-item"><span class="stat-num">30+</span><span class="stat-label">New Commands</span></div>
-  <div class="stat-item"><span class="stat-num">25+</span><span class="stat-label">Custom Foods</span></div>
-  <div class="stat-item"><span class="stat-num">5.0.2</span><span class="stat-label">Latest Build</span></div>
+  <div class="stat-item"><span class="stat-num">5</span><span class="stat-label">Visual Overhauls</span></div>
+  <div class="stat-item"><span class="stat-num">2.5.5</span><span class="stat-label">Latest Build</span></div>
+  <div class="stat-item"><span class="stat-num">Fabric</span><span class="stat-label">Required Loader</span></div>
   <div class="stat-item"><span class="stat-num">1.20+</span><span class="stat-label">MC Version</span></div>
 </div>
 
@@ -581,40 +553,118 @@
   <div class="container">
     <div class="about-grid">
       <div>
-        <div class="section-label">About the mod</div>
-        <h2 class="section-title">Take complete <span>control</span> of your world</h2>
+        <div class="section-label">About the shader</div>
+        <h2 class="section-title">Minecraft — the <span>Fantasy</span> way</h2>
         <p class="section-text">
-          <strong style="color:#fff">Kolat</strong> is a powerful Minecraft modification designed for server administrators and
-          survival enthusiasts who want more. It expands the default command set with
-          professional-grade admin tools, adds a rich collection of handcrafted custom foods
-          with unique effects, and brings an entirely new layer of gameplay depth — all in a
-          single lightweight <code style="color:var(--green);font-family:monospace">.jar</code> file.
+          <strong style="color:#fff">Fantasy Shaders Reimagined</strong> is a shader pack built on top of
+          <strong style="color:var(--purple-light)">Complementary Shaders</strong>. The goal is simple:
+          make Minecraft more colorful, more striking, and genuinely vibrant, with a fully
+          committed <em style="color:var(--purple-light)">fantasy aesthetic</em>.
           <br><br>
-          Whether you're managing a large multiplayer server or building your own private
-          world, Kolat gives you the precision, flexibility, and flavor that vanilla Minecraft
-          simply cannot offer.
+          Concretely, the shader reworks the overall game atmosphere: blued-out nights, brighter
+          daytime, starry skies, visible auroras and nebulae, stronger reflections on water and
+          surfaces, and the End dimension recolored in a deep violet inspired by the Endermen.
+          Light rays gain in intensity, producing dramatic scenes at sunrise and sunset.
         </p>
       </div>
-      <div class="pixel-art-box">
-        <div class="mc-grid">
-          <div class="mc-block b-command"></div>
-          <div class="mc-block b-gold"></div>
-          <div class="mc-block b-grass"></div>
-          <div class="mc-block b-diamond"></div>
-          <div class="mc-block b-food1"></div>
-          <div class="mc-block b-emerald"></div>
-          <div class="mc-block b-netherite"></div>
-          <div class="mc-block b-food2"></div>
-          <div class="mc-block b-lava"></div>
-          <div class="mc-block b-iron"></div>
-          <div class="mc-block b-obsidian"></div>
-          <div class="mc-block b-tnt"></div>
-          <div class="mc-block b-dirt"></div>
-          <div class="mc-block b-stone"></div>
-          <div class="mc-block b-wood"></div>
-          <div class="mc-block b-grass"></div>
-        </div>
-        <p style="text-align:center; margin-top:1.2rem; font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:var(--dim); letter-spacing:0.1em;">KOLAT-5.0.2.JAR · 100% VANILLA-COMPATIBLE</p>
+
+      <!-- SVG Night Sky Art -->
+      <div class="sky-box">
+        <svg viewBox="0 0 360 260" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="skyGrad" cx="50%" cy="30%" r="70%">
+              <stop offset="0%" stop-color="#1a0a40"/>
+              <stop offset="50%" stop-color="#0d0530"/>
+              <stop offset="100%" stop-color="#050218"/>
+            </radialGradient>
+            <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#d8b4fe" stop-opacity="0.3"/>
+              <stop offset="100%" stop-color="#d8b4fe" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="aurora1" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+              <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+
+          <!-- Sky -->
+          <rect width="360" height="200" fill="url(#skyGrad)"/>
+
+          <!-- Aurora bands -->
+          <ellipse cx="180" cy="60" rx="220" ry="35" fill="none" stroke="url(#aurora1)" stroke-width="30" opacity="0.5">
+            <animate attributeName="ry" values="30;45;30" dur="8s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.4;0.7;0.4" dur="8s" repeatCount="indefinite"/>
+          </ellipse>
+          <ellipse cx="100" cy="40" rx="140" ry="20" fill="none" stroke="#3b82f6" stroke-width="15" opacity="0.3">
+            <animate attributeName="opacity" values="0.2;0.5;0.2" dur="6s" repeatCount="indefinite"/>
+          </ellipse>
+          <ellipse cx="270" cy="55" rx="100" ry="18" fill="none" stroke="#67e8f9" stroke-width="12" opacity="0.25">
+            <animate attributeName="opacity" values="0.15;0.4;0.15" dur="10s" repeatCount="indefinite"/>
+          </ellipse>
+
+          <!-- Stars -->
+          <g filter="url(#glow)" fill="white">
+            <circle cx="30" cy="20" r="1.2" opacity="0.9"><animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/></circle>
+            <circle cx="80" cy="12" r="0.8" opacity="0.7"/>
+            <circle cx="130" cy="25" r="1.5" opacity="0.95"><animate attributeName="opacity" values="0.8;1;0.8" dur="4s" repeatCount="indefinite"/></circle>
+            <circle cx="200" cy="18" r="0.9" opacity="0.8"/>
+            <circle cx="260" cy="8" r="1.1" opacity="0.85"><animate attributeName="opacity" values="0.5;0.9;0.5" dur="2.5s" repeatCount="indefinite"/></circle>
+            <circle cx="320" cy="22" r="0.7" opacity="0.7"/>
+            <circle cx="50" cy="50" r="0.8" opacity="0.6"/>
+            <circle cx="170" cy="45" r="1" opacity="0.75"/>
+            <circle cx="300" cy="40" r="1.3" opacity="0.9"><animate attributeName="opacity" values="0.7;1;0.7" dur="3.5s" repeatCount="indefinite"/></circle>
+            <circle cx="340" cy="15" r="0.9" opacity="0.8"/>
+            <circle cx="10" cy="70" r="1" opacity="0.65"/>
+            <circle cx="230" cy="60" r="0.7" opacity="0.5"/>
+          </g>
+          <!-- Purple nebula dots -->
+          <g fill="#a855f7" opacity="0.4">
+            <circle cx="110" cy="35" r="0.8"/><circle cx="150" cy="15" r="1"/><circle cx="200" cy="40" r="0.7"/><circle cx="280" cy="25" r="0.9"/>
+          </g>
+
+          <!-- Moon -->
+          <circle cx="290" cy="50" r="20" fill="url(#moonGlow)"/>
+          <circle cx="290" cy="50" r="10" fill="#e9d5ff" opacity="0.9"/>
+          <circle cx="295" cy="46" r="8" fill="#1a0a35"/>
+
+          <!-- Ground / terrain silhouette -->
+          <rect y="200" width="360" height="60" fill="#0a0818"/>
+          <!-- Trees silhouette -->
+          <rect x="0" y="170" width="18" height="35" fill="#0a0818"/>
+          <polygon points="9,145 0,175 18,175" fill="#0a0818"/>
+          <polygon points="9,130 -2,170 20,170" fill="#0a0818"/>
+
+          <rect x="30" y="178" width="12" height="27" fill="#0a0818"/>
+          <polygon points="36,158 28,183 44,183" fill="#0a0818"/>
+
+          <rect x="55" y="172" width="16" height="33" fill="#0a0818"/>
+          <polygon points="63,148 53,178 73,178" fill="#0a0818"/>
+          <polygon points="63,133 51,173 75,173" fill="#0a0818"/>
+
+          <!-- House -->
+          <rect x="90" y="175" width="45" height="30" fill="#0f0825"/>
+          <polygon points="112,155 85,178 140,178" fill="#120a2a"/>
+          <rect x="108" y="183" width="8" height="22" fill="#0a0818"/>
+          <!-- Window glow -->
+          <rect x="97" y="180" width="7" height="6" fill="#fbbf24" opacity="0.5"/>
+          <rect x="120" y="180" width="7" height="6" fill="#a855f7" opacity="0.4"/>
+
+          <!-- Water reflection -->
+          <rect x="160" y="200" width="200" height="8" fill="#1a0a35" opacity="0.6"/>
+          <!-- Moon reflection -->
+          <ellipse cx="290" cy="204" rx="12" ry="3" fill="#d8b4fe" opacity="0.2">
+            <animate attributeName="rx" values="10;15;10" dur="3s" repeatCount="indefinite"/>
+          </ellipse>
+          <!-- Purple glow on water -->
+          <ellipse cx="200" cy="203" rx="80" ry="4" fill="#7c3aed" opacity="0.15"/>
+
+          <!-- Label -->
+          <text x="180" y="255" text-anchor="middle" fill="#6b5a8a" font-size="9" font-family="monospace" letter-spacing="2">FANTASY NIGHT SKY</text>
+        </svg>
       </div>
     </div>
   </div>
@@ -623,226 +673,72 @@
 <!-- ══════════ FEATURES ══════════ -->
 <section id="features">
   <div class="container">
-    <div class="section-label">Core features</div>
-    <h2 class="section-title">What <span>Kolat</span> brings to the table</h2>
+    <div class="section-label">Core Features</div>
+    <h2 class="section-title">What <span>Fantasy Shaders</span> changes</h2>
 
     <div class="features-grid">
       <div class="feature-card">
-        <span class="feature-icon">⚙️</span>
-        <div class="feature-title">Advanced Admin Commands</div>
-        <p class="feature-desc">Over 30 new server-side commands that go far beyond vanilla OP abilities. Teleport, manage players, control time, weather, inventories, and world-states with surgical precision.</p>
+        <span class="feature-icon">🌌</span>
+        <div class="feature-title">Blue Nights & Living Sky</div>
+        <p class="feature-desc">Nights bathed in a deep fantasy blue. The sky is no longer flat — stars, auroras, clouds and nebulae appear above your builds. Night becomes a backdrop in its own right.</p>
       </div>
-      <div class="feature-card gold">
-        <span class="feature-icon">🍖</span>
-        <div class="feature-title">Custom Food System</div>
-        <p class="feature-desc">25+ unique foods with hand-designed effects: speed boosts, night vision, regeneration, and more. Each recipe is craftable in survival, keeping gameplay fair and rewarding.</p>
+      <div class="feature-card blue-card">
+        <span class="feature-icon">☀️</span>
+        <div class="feature-title">Brighter Daytime</div>
+        <p class="feature-desc">During the day, the horizon brightens to a pale white and the sky shifts toward a clean light blue. Clouds follow the same logic, reinforcing volume without losing Minecraft's iconic silhouette.</p>
       </div>
-      <div class="feature-card red">
-        <span class="feature-icon">🛡️</span>
-        <div class="feature-title">Permission Levels</div>
-        <p class="feature-desc">Fine-grained permission tiers — ADMIN, OP, and ALL — ensure sensitive commands stay in the right hands. No more relying on basic OP flags.</p>
+      <div class="feature-card gold-card">
+        <span class="feature-icon">🌅</span>
+        <div class="feature-title">Colorful Sunrises & Sunsets</div>
+        <p class="feature-desc">Warm gradients are pushed further. Morning and evening transitions are more dramatic with golden and pink hues that highlight the silhouettes of builds and terrain — without blinding visibility.</p>
+      </div>
+      <div class="feature-card cyan-card">
+        <span class="feature-icon">💧</span>
+        <div class="feature-title">Reflections & Light Rays</div>
+        <p class="feature-desc">Surface reflections gain intensity, especially at night where water can act like a mirror. Volumetric light rays through foliage, openings, and stained glass are amplified — perfect for architecture.</p>
       </div>
       <div class="feature-card">
-        <span class="feature-icon">📦</span>
-        <div class="feature-title">Single .jar, Zero Bloat</div>
-        <p class="feature-desc">Everything packed into one clean .jar file. Drop it in your mods folder, launch the game, and you're done. No config nightmare, no extra dependencies.</p>
+        <span class="feature-icon">🔮</span>
+        <div class="feature-title">Recolored End Dimension</div>
+        <p class="feature-desc">The End is recolored to match the violet tone of the Endermen. The atmosphere becomes more cohesive and readable, while remaining instantly recognizable as the End.</p>
       </div>
-      <div class="feature-card gold">
+      <div class="feature-card blue-card">
         <span class="feature-icon">⚡</span>
-        <div class="feature-title">Performance First</div>
-        <p class="feature-desc">Built with server TPS in mind. Commands are async-safe, food effects are optimized, and the entire mod leaves a minimal memory footprint even on large servers.</p>
-      </div>
-      <div class="feature-card red">
-        <span class="feature-icon">🔧</span>
-        <div class="feature-title">Survival Friendly</div>
-        <p class="feature-desc">Custom foods integrate seamlessly into survival mode with craftable recipes. Admins can toggle features per-world, making Kolat versatile across any server type.</p>
+        <div class="feature-title">Built on Complementary</div>
+        <p class="feature-desc">Fantasy Shaders Reimagined inherits the performance and stability of Complementary Shaders. You get the visual upgrade without sacrificing the solid foundation underneath.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ COMMANDS ══════════ -->
-<section id="commands">
+<!-- ══════════ CHARACTERISTICS ══════════ -->
+<section id="details">
   <div class="container">
-    <div class="section-label">Command Reference</div>
-    <h2 class="section-title">New <span>Admin Commands</span></h2>
-    <p class="section-text">All commands added by Kolat. Arguments in <span style="color:var(--gold);font-family:monospace">&lt;brackets&gt;</span> are required, <span style="color:var(--dim);font-family:monospace">[brackets]</span> are optional.</p>
+    <div class="section-label">Detailed Characteristics</div>
+    <h2 class="section-title">Everything that <span>changes</span></h2>
 
-    <table class="cmd-table">
-      <thead>
-        <tr>
-          <th>Command</th>
-          <th>Arguments</th>
-          <th>Permission</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="cmd-name">/kolat</td>
-          <td class="cmd-args">—</td>
-          <td><span class="badge badge-all">ALL</span></td>
-          <td class="cmd-desc">Show mod info, version, and loaded modules.</td>
-        </tr>
-        <tr>
-          <td class="cmd-name">/invsee</td>
-          <td class="cmd-args">&lt;player&gt;</td>
-          <td><span class="badge badge-admin">ADMIN</span></td>
-          <td class="cmd-desc">Open and edit another player's inventory in real-time.</td>
-        </tr>
-        <tr>
-          <td class="cmd-name">/freeze</td>
-          <td class="cmd-args">&lt;player&gt; [duration]</td>
-          <td><span class="badge badge-admin">ADMIN</span></td>
-          <td class="cmd-desc">Completely immobilize a player. Optional duration in seconds.</td>
-        </tr>
-        <tr>
-          <td class="cmd-name">/heal</td>
-          <td class="cmd-args">[player] [amount]</td>
-          <td><span class="badge badge-op">OP</span></td>
-          <td class="cmd-desc">Restore health to full or to a specified amount for self or target.</td>
-        </tr>
-        <tr>
-          <td class="cmd-name">/feed</td>
-          <td class="cmd-args">[player]</td>
-          <td><span class="badge badge-op">OP</span></td>
-          <td class="cmd-desc">Instantly fill the hunger bar of self or another player.</td>
-        </tr>
-        <tr>
-          <td class="cmd-name">/god</td>
-          <td class="cmd-args">[player]</td>
-          <td><span class="badge badge-admin">ADMIN</span></td>
-          <td class="cmd-desc">Toggle godmode — invincibility to all damage types.</td>
-        </tr>
-        <tr>
-          <td class="cmd-name">/vanish</td>
-          <td class="cmd-args">[player]</td>
-          <td><span class="badge badge-admin">ADMIN</span></td>
-          <td class="cmd-desc">Make yourself or a player invisible to other players. Silent join/leave.</td>
-        </tr>
-        <tr>
-          <td class="cmd-name">/broadcast</td>
-          <td class="cmd-args">&lt;message&gt;</td>
-          <td><span class="badge badge-op">OP</span></td>
-          <td class="cmd-desc">Send a formatted announcement to the entire server.</td>
-        </tr>
-        <tr>
-          <td class="cmd-name">/tphere</td>
-          <td class="cmd-args">&lt;player&gt;</td>
-          <td><span class="badge badge-op">OP</span></td>
-          <td class="cmd-desc">Teleport a player to your current location instantly.</td>
-        </tr>
-        <tr>
-          <td class="cmd-name">/smite</td>
-          <td class="cmd-args">&lt;player|entity&gt;</td>
-          <td><span class="badge badge-admin">ADMIN</span></td>
-          <td class="cmd-desc">Strike a target with a powerful lightning bolt.</td>
-        </tr>
-        <tr>
-          <td class="cmd-name">/world</td>
-          <td class="cmd-args">&lt;time|weather|pvp&gt; &lt;value&gt;</td>
-          <td><span class="badge badge-admin">ADMIN</span></td>
-          <td class="cmd-desc">Control per-world settings including time cycle, weather, and PvP toggle.</td>
-        </tr>
-        <tr>
-          <td class="cmd-name">/spawner</td>
-          <td class="cmd-args">&lt;entity&gt;</td>
-          <td><span class="badge badge-admin">ADMIN</span></td>
-          <td class="cmd-desc">Place a custom mob spawner with the entity type of your choice.</td>
-        </tr>
-        <tr>
-          <td class="cmd-name">/give custom</td>
-          <td class="cmd-args">&lt;foodid&gt; [amount] [player]</td>
-          <td><span class="badge badge-op">OP</span></td>
-          <td class="cmd-desc">Give any Kolat custom food item directly to a player.</td>
-        </tr>
-        <tr>
-          <td class="cmd-name">/revive</td>
-          <td class="cmd-args">&lt;player&gt;</td>
-          <td><span class="badge badge-admin">ADMIN</span></td>
-          <td class="cmd-desc">Restore a recently deceased player at their death coordinates with full HP.</td>
-        </tr>
-        <tr>
-          <td class="cmd-name">/clearinv</td>
-          <td class="cmd-args">&lt;player&gt; [slot]</td>
-          <td><span class="badge badge-admin">ADMIN</span></td>
-          <td class="cmd-desc">Clear all or specific slots of a player's inventory.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- ══════════ FOODS ══════════ -->
-<section id="foods">
-  <div class="container">
-    <div class="section-label">Custom Food System</div>
-    <h2 class="section-title">25+ <span>Unique Foods</span></h2>
-    <p class="section-text">Kolat introduces handcrafted foods with special effects not found in vanilla. All are craftable in survival mode — collect the ingredients, craft the recipe, and gain the edge.</p>
-
-    <div class="food-grid">
-      <div class="food-card">
-        <div class="food-name">Dragon Steak</div>
-        <div class="food-effect">Grants <strong style="color:#e050f0">Resistance III</strong> + <strong style="color:#ff9922">Strength II</strong> for 60s</div>
-        <div class="food-hearts"><div class="heart"></div><div class="heart"></div><div class="heart"></div><div class="heart"></div><div class="heart"></div></div>
+    <div class="char-list">
+      <div class="char-item">
+        <div class="char-title">🌙 Blue Nights & Animated Sky Vault</div>
+        <div class="char-desc">The night adopts a fantasy blue tone. The sky vault is no longer static: stars, auroras, clouds and nebulae animate above your constructions. The result is a night that isn't just dark — it becomes a full visual environment, clear and pleasant enough for exploration or building.</div>
       </div>
-      <div class="food-card">
-        <div class="food-name">Nether Mushroom Soup</div>
-        <div class="food-effect">Grants <strong style="color:#ff4444">Fire Resistance</strong> + <strong style="color:#ff8822">Haste II</strong> for 45s</div>
-        <div class="food-hearts"><div class="heart"></div><div class="heart"></div><div class="heart"></div><div class="heart"></div></div>
+      <div class="char-item blue-left">
+        <div class="char-title">☀️ Brighter, Crisper Days</div>
+        <div class="char-desc">In full daylight, the horizon whitens and the sky vault shifts toward a clean light blue. Clouds follow the same logic, which reinforces volumes and depth without distorting the cube-based silhouette of the game. Colors are more vivid, shapes better defined.</div>
       </div>
-      <div class="food-card">
-        <div class="food-name">Enchanted Apple Tart</div>
-        <div class="food-effect">Full <strong style="color:#ffdd55">Regeneration IV</strong> + <strong style="color:#44ff88">Absorption III</strong> for 30s</div>
-        <div class="food-hearts"><div class="heart"></div><div class="heart"></div><div class="heart"></div><div class="heart"></div><div class="heart"></div></div>
+      <div class="char-item gold-left">
+        <div class="char-title">🌄 More Colorful Sunrises & Sunsets</div>
+        <div class="char-desc">The shader pushes warm gradients further. Morning and evening transitions are more pronounced, with hues leaning toward gold and rose — saturated enough to be striking, but never enough to impair visibility. Silhouettes of builds and terrain are dramatically highlighted.</div>
       </div>
-      <div class="food-card">
-        <div class="food-name">Speed Berries</div>
-        <div class="food-effect"><strong style="color:#55bbff">Speed III</strong> + <strong style="color:#88ff55">Jump Boost II</strong> for 90s</div>
-        <div class="food-hearts"><div class="heart"></div><div class="heart"></div></div>
+      <div class="char-item cyan-left">
+        <div class="char-title">✨ Reflections & Volumetric Light</div>
+        <div class="char-desc">Surface reflections gain presence, especially at night where water can behave like a mirror. Volumetric light (rays through vegetation, openings, stained glass) is intensified — ideal for emphasizing the architecture of a base or city. Adds real depth to any structure.</div>
       </div>
-      <div class="food-card">
-        <div class="food-name">Shadow Jerky</div>
-        <div class="food-effect"><strong style="color:#9955cc">Night Vision</strong> + <strong style="color:#555599">Invisibility</strong> for 60s</div>
-        <div class="food-hearts"><div class="heart"></div><div class="heart"></div><div class="heart"></div></div>
-      </div>
-      <div class="food-card">
-        <div class="food-name">Iron Broth</div>
-        <div class="food-effect"><strong style="color:#cccccc">Iron Skin</strong> effect — damage resistance +40% for 120s</div>
-        <div class="food-hearts"><div class="heart"></div><div class="heart"></div><div class="heart"></div><div class="heart"></div></div>
-      </div>
-      <div class="food-card">
-        <div class="food-name">Lava Caramel</div>
-        <div class="food-effect">Immunity to all <strong style="color:#ff5522">fire &amp; lava</strong> damage for 180s</div>
-        <div class="food-hearts"><div class="heart"></div><div class="heart"></div></div>
-      </div>
-      <div class="food-card">
-        <div class="food-name">Deep Sea Fish</div>
-        <div class="food-effect"><strong style="color:#22aaff">Water Breathing</strong> + <strong style="color:#3388ff">Dolphin's Grace</strong> for 120s</div>
-        <div class="food-hearts"><div class="heart"></div><div class="heart"></div><div class="heart"></div></div>
-      </div>
-      <div class="food-card">
-        <div class="food-name">Ender Pearl Candy</div>
-        <div class="food-effect">Teleport to a random safe location within 64 blocks radius</div>
-        <div class="food-hearts"><div class="heart"></div></div>
-      </div>
-      <div class="food-card">
-        <div class="food-name">Wither Cookie</div>
-        <div class="food-effect"><strong style="color:#55ff55">Regeneration V</strong> but applies <strong style="color:#222222">Wither I</strong> for 5s first</div>
-        <div class="food-hearts"><div class="heart"></div><div class="heart"></div><div class="heart"></div><div class="heart"></div><div class="heart"></div></div>
-      </div>
-      <div class="food-card">
-        <div class="food-name">Cloud Bread</div>
-        <div class="food-effect"><strong style="color:#aaddff">Slow Fall</strong> + <strong style="color:#88ffcc">Levitation I</strong> for 30s</div>
-        <div class="food-hearts"><div class="heart"></div><div class="heart"></div><div class="heart"></div></div>
-      </div>
-      <div class="food-card">
-        <div class="food-name">Battle Cake</div>
-        <div class="food-effect"><strong style="color:#ff5544">Strength III</strong> + <strong style="color:#ff9933">Haste III</strong> for 20s. Short but brutal.</div>
-        <div class="food-hearts"><div class="heart"></div><div class="heart"></div><div class="heart"></div><div class="heart"></div></div>
+      <div class="char-item">
+        <div class="char-title">🟣 End Dimension — Violet Overhaul</div>
+        <div class="char-desc">The End is entirely recolored around a violet palette consistent with the Endermen. The atmosphere becomes more coherent and readable, while the lighting better highlights shapes and platforms. It remains immediately recognizable as the End, but now feels intentional and immersive.</div>
       </div>
     </div>
-    <p style="margin-top:1.5rem; font-family:'Share Tech Mono',monospace; font-size:0.75rem; color:var(--dim); letter-spacing:0.08em;">+ 13 more foods available in-game. Discover them through exploration and crafting.</p>
   </div>
 </section>
 
@@ -856,32 +752,43 @@
       <div class="step">
         <div class="step-num">01</div>
         <div class="step-body">
-          <h3>Install Minecraft Forge</h3>
-          <p>Make sure you have <strong>Minecraft Forge</strong> installed for your Minecraft version (1.20+ recommended). Download it from the official Forge website and run the installer. Launch the game once to generate the <span class="code-inline">mods/</span> folder.</p>
+          <h3>Install Fabric Loader</h3>
+          <p>
+            Fantasy Shaders Reimagined is <strong style="color:var(--purple-light)">compatible with Fabric only</strong>.
+            Download and install <strong>Fabric Loader</strong> for your Minecraft version (1.20+) from the official Fabric website.
+            Run the installer and launch the game once to generate the <span class="code-inline">mods/</span> folder.
+          </p>
+          <div class="fabric-note">FABRIC LOADER IS REQUIRED — Forge is NOT supported</div>
         </div>
       </div>
       <div class="step">
         <div class="step-num">02</div>
         <div class="step-body">
-          <h3>Download Kolat-5.0.2.jar</h3>
-          <p>Click the download button below to get <span class="code-inline">Kolat-5.0.2.jar</span> from our official distribution. Save the file anywhere on your computer — you'll move it in the next step.</p>
+          <h3>Download the shader .jar</h3>
+          <p>Click the download button below to get <span class="code-inline">Fantasy_Shaders_Reimagined-2.5.5.jar</span> from the official distribution. Save the file anywhere on your computer — you'll place it in the next step.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">03</div>
         <div class="step-body">
-          <h3>Place in your mods folder</h3>
-          <p>Move <span class="code-inline">Kolat-5.0.2.jar</span> into your Minecraft <span class="code-inline">mods/</span> folder. On Windows: <span class="code-inline">%appdata%\.minecraft\mods\</span> — On Mac: <span class="code-inline">~/Library/Application Support/minecraft/mods/</span>. Launch the game with the Forge profile and enjoy Kolat!</p>
+          <h3>Place it in your mods folder</h3>
+          <p>
+            Move <span class="code-inline">Fantasy_Shaders_Reimagined-2.5.5.jar</span> into your Minecraft
+            <span class="code-inline">mods/</span> folder.<br>
+            Windows: <span class="code-inline">%appdata%\.minecraft\mods\</span><br>
+            Mac: <span class="code-inline">~/Library/Application Support/minecraft/mods/</span><br>
+            Launch the game with the <strong style="color:var(--purple-light)">Fabric</strong> profile and enjoy the shader!
+          </p>
         </div>
       </div>
     </div>
 
     <!-- BIG DOWNLOAD -->
     <div class="download-section">
-      <div class="dl-title">Ready to install?</div>
-      <p class="dl-sub">Free download · No account required · Instant access</p>
-      <a class="btn-big" href="https://www.mediafire.com/file/b5v0faezv583j5i/Kolat-5.0.2.jar/file" target="_blank">⬇ DOWNLOAD KOLAT 5.0.2</a>
-      <p class="dl-info">KOLAT-5.0.2.JAR · FORGE MOD · MINECRAFT 1.20+</p>
+      <div class="dl-title">Ready to transform your world?</div>
+      <p class="dl-sub">Free download · No account required · Instant access · Fabric only</p>
+      <a class="btn-big" href="https://www.mediafire.com/file/dyh1qqhku5td6ii/Fantasy_Shaders_Reimagined-2.5.5.jar/file" target="_blank">✦ DOWNLOAD FANTASY SHADERS 2.5.5</a>
+      <p class="dl-info">FANTASY_SHADERS_REIMAGINED-2.5.5.JAR · FABRIC ONLY · MINECRAFT 1.20+</p>
     </div>
 
   </div>
@@ -889,7 +796,7 @@
 
 <!-- ══════════ FOOTER ══════════ -->
 <footer>
-  <span>KOLAT MOD</span> — v5.0.2 · Forge Compatible · Minecraft 1.20+ · Free & Open to All
+  <span>FANTASY SHADERS REIMAGINED</span> — v2.5.5 · Based on Complementary Shaders · Fabric Only · Free for All
 </footer>
 
 </body>
